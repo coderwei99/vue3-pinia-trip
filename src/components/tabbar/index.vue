@@ -1,6 +1,6 @@
 <template>
   <div id="index">
-    <h2>index</h2>
+    <h2>tab-bar</h2>
   </div>
 </template>
 
