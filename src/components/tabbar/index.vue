@@ -37,17 +37,11 @@ const currIndex = ref(0);
   display: flex;
   justify-content: space-around;
 
-  .tabbat_item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    img {
-      width: 32px;
-    }
-    .active {
-      color: red;
-    }
+  img {
+    width: 26px;
+  }
+  .active {
+    color: red;
   }
 }
 </style>
