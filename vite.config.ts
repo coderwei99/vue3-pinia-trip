@@ -2,6 +2,8 @@ import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import Components from "unplugin-vue-components/vite";
+import { VantResolver } from "unplugin-vue-components/resolvers";
 
 import Unocss from "unocss/vite";
 import { presetUno, presetAttributify, presetIcons } from "unocss";
@@ -9,6 +11,9 @@ import { presetUno, presetAttributify, presetIcons } from "unocss";
 export default defineConfig({
   plugins: [
     vue(),
+    Components({
+      resolvers: [VantResolver()],
+    }),
     Unocss({
       presets: [presetUno(), presetAttributify(), presetIcons()],
     }),
