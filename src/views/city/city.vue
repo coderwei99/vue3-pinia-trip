@@ -14,9 +14,7 @@
       </template>
     </van-tabs>
     <div class="content">
-      <template v-for="item in currentData?.cities">
-        <CityGroup :group-data="item" />
-      </template>
+      <CityGroup :group-data="currentData" />
     </div>
   </div>
 </template>
@@ -29,7 +27,7 @@ import useCityStore from "@/store/modules/city/citys";
 import { storeToRefs } from "pinia";
 
 // 组件
-import CityGroup from "./cpns/city-group-item.vue";
+import CityGroup from "./cpns/city-group.vue";
 
 const router = useRouter();
 
@@ -58,7 +56,7 @@ const currentData = computed(() => allCitites.value[activeIndex.value]);
 <style lang="less" scoped>
 .city {
   .content {
-    height: calc(100vh - 9px);
+    height: calc(100vh - 98px);
     overflow-y: auto;
   }
 }
