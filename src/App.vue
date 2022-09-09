@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import tabBar from "@/components/tabbar/index.vue";
-import HomeNavBar from "@/components/navbar/home-nav-bar.vue";
 </script>
 
 <template>
-  <div>
-    <HomeNavBar></HomeNavBar>
+  <div class="app">
     <router-view />
     <tabBar />
   </div>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.app {
+  height: 100%;
+  overflow: auto;
+}
+</style>

@@ -1,10 +1,11 @@
 <template>
-  <div id="home">
+  <div class="home">
+    <HomeNavBar></HomeNavBar>
     <div class="banner">
       <img src="@/assets/iamge/banner.png" />
     </div>
     <div class="city_box">
-      <div class="city">广州</div>
+      <div class="city" @click="toSerchPage">广州</div>
       <div class="location">
         <span class="text">我的位置</span>
         <img src="@/assets/iamge/location_city.png" alt="" />
@@ -13,11 +14,18 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import HomeNavBar from "./cpns/home-nav-bar.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const toSerchPage = () => {
+  router.push("/city");
+};
+</script>
 
 <style lang="less" scoped>
 //
-#home {
+.home {
   .banner {
     img {
       height: 250px;

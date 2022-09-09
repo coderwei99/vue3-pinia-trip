@@ -1,5 +1,5 @@
 <template>
-  <div id="tabbar">
+  <div class="tabbar">
     <van-tabbar v-model="currIndex" active-color="#ee0a24">
       <template v-for="(item, index) in tabbarData" :key="item.id">
         <van-tabbar-item :to="item.path">
@@ -28,7 +28,7 @@ const currIndex = ref(0);
 </script>
 
 <style lang="less" scoped>
-#tabbar {
+.tabbar {
   height: 50px;
   position: fixed;
   bottom: 0;
