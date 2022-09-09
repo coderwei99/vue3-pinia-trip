@@ -1,20 +1,24 @@
 <template>
   <div class="city top_page">
-    <van-search
-      v-model="searchValue"
-      placeholder="请输入搜索关键词"
-      show-action
-      @search="onSearch"
-      @cancel="onCancel"
-    />
+    <div class="top">
+      <van-search
+        v-model="searchValue"
+        placeholder="请输入搜索关键词"
+        show-action
+        @search="onSearch"
+        @cancel="onCancel"
+      />
 
-    <van-tabs v-model:active="activeIndex">
-      <template v-for="(item, key, index) in allCitites">
-        <van-tab :title="item.title" :name="key"> </van-tab>
-      </template>
-    </van-tabs>
+      <van-tabs v-model:active="activeIndex">
+        <template v-for="(item, key, index) in allCitites">
+          <van-tab :title="item.title" :name="key"> </van-tab>
+        </template>
+      </van-tabs>
+    </div>
     <div class="content">
-      <CityGroup :group-data="currentData" />
+      <template v-for="(item, key) in allCitites">
+        <CityGroup v-show="key == activeIndex" :group-data="item" />
+      </template>
     </div>
   </div>
 </template>
@@ -55,6 +59,10 @@ const currentData = computed(() => allCitites.value[activeIndex.value]);
 
 <style lang="less" scoped>
 .city {
+  .top {
+    position: relative;
+    z-index: 9;
+  }
   .content {
     height: calc(100vh - 98px);
     overflow-y: auto;
