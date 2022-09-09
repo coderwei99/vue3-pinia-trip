@@ -5,12 +5,15 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "preserveValueImports": false,
+    "importsNotUsedAsValues":"preserve",
+    "suppressImplicitAnyIndexErrors": true
   },
 
   "references": [
     {
       "path": "./tsconfig.config.json"
     }
-  ]
+  ],
 }
