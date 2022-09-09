@@ -1,3 +1,10 @@
 body{
   font-size: 14px;
 }
+
+.top_page{
+  position: relative;
+  z-index: 9;
+  background-color: #fff;
+  overflow-y: auto;
+}
