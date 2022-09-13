@@ -17,7 +17,10 @@
     </div>
     <div class="content">
       <template v-for="(item, key) in allCitites">
-        <CityGroup v-show="key == activeIndex" :group-data="item" />
+        <CityGroup
+          v-show="item.title == currentData.title"
+          :group-data="item"
+        />
       </template>
     </div>
   </div>
@@ -46,7 +49,7 @@ const onCancel = () => {
 };
 
 // tab切换
-const activeIndex = ref<string>("");
+const activeIndex = ref<string>("cityGroup");
 
 const cityStore = useCityStore();
 cityStore.fetchAllCities();

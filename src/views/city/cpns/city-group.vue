@@ -4,7 +4,7 @@
       <van-index-anchor index="热门" />
       <div class="hotCity">
         <template v-for="item in hotCity" :key="item.cityId">
-          <div class="city_item">
+          <div class="city_item" @click="cityClick(item)">
             {{ item.cityName }}
           </div>
         </template>
@@ -12,7 +12,7 @@
       <template v-for="item in props.groupData?.cities" :key="item.group">
         <van-index-anchor :index="item.group" />
         <template v-for="_item in item.cities" :key="_item.cityName">
-          <van-cell :title="_item.cityName" />
+          <van-cell :title="_item.cityName" @click="cityClick(_item)" />
         </template>
       </template>
     </van-index-bar>
@@ -21,11 +21,15 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
+
+import useCityStore from "@/store/modules/city/citys";
 
 const props = defineProps<{
   groupData: any;
 }>();
 
+// 处理索引
 let indexList: any = [];
 indexList = computed((): string[] => {
   const temp = props.groupData.cities.map((item: any) => item.group);
@@ -34,9 +38,18 @@ indexList = computed((): string[] => {
 });
 
 // 热门城市数据处理
+const hotCity = props.groupData.hotCities;
 
-const hotCity = ref(props.groupData.hotCities);
-console.log(hotCity);
+//  城市点击事件
+const router = useRouter();
+const cityStore = useCityStore();
+const cityClick = (city: any) => {
+  // 保存城市数据
+  console.log(city);
+  cityStore.selectCity = city;
+  // 返回上一页
+  router.back();
+};
 </script>
 
 <style lang="less" scoped>
